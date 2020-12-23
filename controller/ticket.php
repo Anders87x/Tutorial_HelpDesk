@@ -16,6 +16,7 @@
                 $sub_array[] = $row["tick_id"];
                 $sub_array[] = $row["cat_nom"];
                 $sub_array[] = $row["tick_titulo"];
+                $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_crea"]));
                 $sub_array[] = '<button type="button" onClick="ver('.$row["tick_id"].');"  id="'.$row["tick_id"].'" class="btn btn-inline btn-primary btn-sm ladda-button"><i class="fa fa-eye"></i></button>';
                 $data[] = $sub_array;
             }
