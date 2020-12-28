@@ -30,11 +30,11 @@
     <div class="page-center">
         <div class="page-center-in">
             <div class="container-fluid">
-
             
-				<input type="hidden" id="rol_id" name="rol_id" value="1">
-
                 <form class="sign-box" action="" method="post" id="login_form">
+                    
+                    <input type="hidden" id="rol_id" name="rol_id" value="1">
+
                     <div class="sign-avatar">
                         <img src="public/img/avatar-sign.png" alt="">
                     </div>
