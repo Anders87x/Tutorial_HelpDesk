@@ -75,7 +75,8 @@
                 td_ticketdetalle.tickd_descrip,
                 td_ticketdetalle.fech_crea,
                 tm_usuario.usu_nom,
-                tm_usuario.usu_ape
+                tm_usuario.usu_ape,
+                tm_usuario.rol_id
                 FROM 
                 td_ticketdetalle
                 INNER join tm_usuario on td_ticketdetalle.usu_id = tm_usuario.usu_id
