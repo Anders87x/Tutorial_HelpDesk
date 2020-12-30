@@ -9,6 +9,20 @@ $(document).ready(function(){
         $('#lbldetalle').html(data);
     }); 
 
+    $('#tickd_descrip').summernote({
+        height: 150,
+        lang: "es-ES",
+        callbacks: {
+            onImageUpload: function(image) {
+                console.log("Image detect...");
+                myimagetreat(image[0]);
+            },
+            onPaste: function (e) {
+                console.log("Text detect...");
+            }
+        }
+    });
+
 });
 
 var getUrlParameter = function getUrlParameter(sParam) {
