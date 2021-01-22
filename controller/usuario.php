@@ -6,9 +6,7 @@
     switch($_GET["op"]){
         case "guardaryeditar":
             if(empty($_POST["usu_id"])){       
-                if(is_array($datos)==true and count($datos)==0){
-                    $usuario->insert_usuario($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["rol_id"]);     
-                } 
+                $usuario->insert_usuario($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["rol_id"]);     
             }
             else {
                 $usuario->update_usuario($_POST["usu_id"],$_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["rol_id"]);
@@ -25,10 +23,10 @@
                 $sub_array[] = $row["usu_correo"];
                 $sub_array[] = $row["usu_pass"];
 
-                if ($row["usu_rol"]=="1"){
-                    $sub_array[] = '<span class="label label-pill label-primary">Usuario</span>';
+                if ($row["rol_id"]=="1"){
+                    $sub_array[] = '<span class="label label-pill label-success">Usuario</span>';
                 }else{
-                    $sub_array[] = '<span class="label label-pill label-primary">Soporte</span>';
+                    $sub_array[] = '<span class="label label-pill label-info">Soporte</span>';
                 }
 
                 $sub_array[] = '<button type="button" onClick="editar('.$row["usu_id"].');"  id="'.$row["usu_id"].'" class="btn btn-inline btn-warning btn-sm ladda-button"><i class="fa fa-edit"></i></button>';
