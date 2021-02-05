@@ -133,5 +133,23 @@
             return $resultado=$sql->fetchAll();
         }
 
+        public function get_usuario_grafico($usu_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT tm_categoria.cat_nom as nom,COUNT(*) AS total
+                FROM   tm_ticket  JOIN  
+                    tm_categoria ON tm_ticket.cat_id = tm_categoria.cat_id  
+                WHERE    
+                tm_ticket.est = 1
+                and tm_ticket.usu_id = ?
+                GROUP BY 
+                tm_categoria.cat_nom 
+                ORDER BY total DESC";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        } 
+
     }
 ?>
