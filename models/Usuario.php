@@ -73,11 +73,7 @@
         public function delete_usuario($usu_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="UPDATE tm_usuario 
-                SET 
-                    est='0',
-                    fech_elim = now() 
-                where usu_id=?";
+            $sql="call sp_d_usuario_01(?)";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $usu_id);
             $sql->execute();
@@ -87,7 +83,7 @@
         public function get_usuario(){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT * FROM tm_usuario where est='1'";
+            $sql="call sp_l_usuario_01()";
             $sql=$conectar->prepare($sql);
             $sql->execute();
             return $resultado=$sql->fetchAll();
@@ -96,7 +92,7 @@
         public function get_usuario_x_id($usu_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT * FROM tm_usuario where usu_id=?";
+            $sql="call sp_l_usuario_02(?)";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $usu_id);
             $sql->execute();

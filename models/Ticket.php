@@ -130,7 +130,7 @@
         public function insert_ticketdetalle_cerrar($tick_id,$usu_id){
             $conectar= parent::conexion();
             parent::set_names();
-                $sql="INSERT INTO td_ticketdetalle (tickd_id,tick_id,usu_id,tickd_descrip,fech_crea,est) VALUES (NULL,?,?,'Ticket Cerrado...',now(),'1');";
+                $sql="call sp_i_ticketdetalle_01(?,?)";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $tick_id);
             $sql->bindValue(2, $usu_id);
