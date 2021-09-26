@@ -6,20 +6,26 @@
 
         protected function Conexion(){
             try {
-				$conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=andercode_helpdesk","root","");
-				return $conectar;	
+                //Local
+				$conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=andercode_helpdesk1","root","");
+                //Produccion
+                //$conectar = $this->dbh = new PDO("mysql:host=localhost;dbname=andercode_helpdesk1","andercode","contraseña");
+				return $conectar;
 			} catch (Exception $e) {
 				print "¡Error BD!: " . $e->getMessage() . "<br/>";
-				die();	
+				die();
 			}
         }
 
-        public function set_names(){	
+        public function set_names(){
 			return $this->dbh->query("SET NAMES 'utf8'");
         }
-        
-        public function ruta(){
+
+        public static function ruta(){
+            //Local
 			return "http://localhost:90/PERSONAL_HelpDesk/";
+            //Produccion
+            //return "http://helpdesk.anderson-bastidas.com/";
 		}
 
     }
